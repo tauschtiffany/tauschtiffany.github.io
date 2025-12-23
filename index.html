@@ -143,14 +143,21 @@
       background: #020617;
       border-radius: 12px;
       overflow: visible;
-      transition: height 0.35s ease;
     }
     
+    /* CRITICAL: lock sizing */
     .project-media img {
-      cursor: zoom-in;
+      flex: 0 0 50%;
+      max-width: 50%;
+      height: 100%;
+      object-fit: contain;   /* use contain for diagrams */
+      border-radius: 8px;
+    
       transition: transform 0.25s ease;
+      cursor: zoom-in;
     }
     
+    /* Hover pop-out */
     .project-media img:hover {
       transform: scale(1.15);
       z-index: 2;
