@@ -143,19 +143,20 @@
       background: #020617;
       border-radius: 12px;
       overflow: hidden;
-    
       transition: height 0.35s ease;
-    }
-    
-    .project-card:hover .project-media {
-      height: 320px;
     }
     
     .project-media img {
       width: 50%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 8px;
+      transition: width 0.35s ease;
+    }
+    
+    .project-media img:hover {
+      width: 80%;
+    }
+    
+    .project-media img:not(:hover) {
+      width: 20%;
     }
   </style>
 </head>
