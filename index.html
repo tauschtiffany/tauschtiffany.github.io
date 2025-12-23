@@ -142,21 +142,18 @@
       padding: 0.5rem;
       background: #020617;
       border-radius: 12px;
-      overflow: hidden;
+      overflow: visible;
       transition: height 0.35s ease;
     }
     
     .project-media img {
-      width: 50%;
-      transition: width 0.35s ease;
+      cursor: zoom-in;
+      transition: transform 0.25s ease;
     }
     
     .project-media img:hover {
-      width: 80%;
-    }
-    
-    .project-media img:not(:hover) {
-      width: 20%;
+      transform: scale(1.15);
+      z-index: 2;
     }
   </style>
 </head>
