@@ -73,10 +73,6 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.45);
     }
 
-    .project-card:hover .project-media {
-      height: 360px;
-    }
-
     .project-image {
       width: 100%;
       height: 190px;
@@ -140,38 +136,19 @@
     }
 
     .project-media {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: 190px;
+      display: flex;
       gap: 0.5rem;
+      height: 190px;
       padding: 0.5rem;
       background: #020617;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: height 0.35s ease;
     }
-    
-    /* Default: split evenly */
+
     .project-media img {
-      width: 100%;
+      width: 50%;
       height: 100%;
-      object-fit: contain;
-      border-radius: 8px;
-      transition: transform 0.25s ease, z-index 0.25s ease;
-      cursor: zoom-in;
-    }
-    
-    /* Hover behavior */
-    .project-media img:hover {
-      position: absolute;
-      inset: 0.5rem;          /* respects padding */
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      z-index: 10;
-      background: #020617;
-      cursor: zoom-out;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -229,7 +206,7 @@
   </main>
 
   <footer>
-    © <span>Your Name</span> — Hardware Portfolio
+    © <span>Tiffany Tausch</span> — Project Portfolio
   </footer>
 
 </body>
