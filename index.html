@@ -134,6 +134,20 @@
     footer span {
       color: var(--accent);
     }
+
+    .project-media {
+      display: flex;
+      gap: 0.5rem;
+      height: 190px;
+      background: #020617;
+      padding: 0.5rem;
+    }
+    
+    .project-media img {
+      flex: 1;
+      border-radius: 10px;
+      object-fit: cover;
+    }
   </style>
 </head>
 <body>
@@ -170,8 +184,9 @@
 
     <!-- Project 2 -->
     <article class="project-card">
-      <div class="project-image">
-        Project Image
+      <div class="project-media">
+        <img src="wings_internals.jpg" alt="Wings Internal Diagram">
+        <img src="wings_demo.gif" alt="Wings Flapping Demonstration">
       </div>
       <div class="project-content">
         <h2>Another Project</h2>
