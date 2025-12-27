@@ -143,9 +143,7 @@
       background: #020617;
       transition: height 0.35s ease;
     }
-    .project-card:hover .project-media {
-      height: 360px;   /* adjust until the full images fit */
-    }
+
 
     .project-media img {
       width: 50%;
@@ -156,102 +154,181 @@
       transition: object-fit 0.25s ease;
     }
 
-    .project-card:hover .project-media img {
-      object-fit: contain;      /* show entire image */
+    .project-media img:only-child {
+      width: 100%;
     }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: linear-gradient(180deg, var(--card), #020617);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 90%;
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+
+    .modal h2 {
+      margin-bottom: 1rem;
+    }
+
+    .modal p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .modal-meta p {
+      font-size: 0.9rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .modal-media {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-media img {
+      width: 50%;
+      max-height: 240px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #020617;
+    }
+
+    /* If there's only one image, let it fill */
+    .modal-media img:only-child {
+      width: 100%;
+    }
+
+
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Hardware Projects</h1>
+    <h1>Personal Projects Collection</h1>
     <p>
-      A collection of my personal projects from the past few years, showcasing my skills in embedded systems design and programming and passion for robotics.
+      A collection of my personal projects from the past few years, showcasing my skills in programming, embedded systems design, and passion for robotics. I have had a wide variety of academic interests throughout the years, and it has been so fun to
+      see how the same skills can come in handy in different contexts. Please enjoy this little peek into my design world!
     </p>
   </header>
 
   <main>
-    <!-- Project 1 -->
-    <article class="project-card">
-      <div class="project-media">
-        <img src="flywheel_gears.jpg" alt="Flywheel Gear Ratio 75:1">
-        <img src="flying_disk.gif" alt="Robot Launching Flying Disk">
-      </div>
-      <div class="project-content">
-        <h2>Disk Launching Robot</h2>
-        <p>
-          High school Vex robotics team project, featuring a flywheel with a 75:1 gear ratio.
-          The disk featured in this video was printed out of PLA, so the foam disks in 
-          competition were much more aerodynamic! 
-        </p>
-        <div class="project-tags">
-          <span class="tag"> Vex Microcontrollers</span>
-          <span class="tag">Fusion360</span>
-          <span class="tag">C++</span>
-        </div>
-      </div>
-    </article>
 
-    <!-- Project 2 -->
-    <article class="project-card">
+    <!-- Project 1 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Bass Boost Audio Amplifier Project',
+          'This was a lab project in my Circuits and Electronics class where we designed our ',
+          'November 2025',
+          'Analog Circuit Design, Operational Amplifiers, ',
+          this
+      )">
       <div class="project-media">
-        <img src="wings_internals.jpg" alt="Wings Internal Diagram">
-        <img src="wings_demo.gif" alt="Wings Flapping Demonstration">
+        <img src="light_following_diagram.jpeg" alt="Light Following Robot Circuit Diagram">
+        <img src="light_following_demo.gif" alt="Light Following Robot Demonstration">
       </div>
       <div class="project-content">
-        <h2>Flapping Barbie Fairy Wings</h2>
-        <p>
-          Using Vex Robotics parts, this is project I worked on with some friends in my senior year of high school
-          for a cosploy costume contest in our engineering club. I did most of the electrical work, and my friends helped 
-          me paint and construct the wings out of cellophane and construction wire. 
-        </p>
-        <div class="project-tags">
-          <span class="tag"></span>
-          <span class="tag"></span>
-        </div>
-      </div>
-    </article>
-    
-    <!-- Project 3 -->
-    <article class="project-card">
-      <div class="project-media">
-        <img src="mantaray_rov.jpg" alt="A Manta Ray Inspired Underwater ROV">
-        <img src="rov_swimming.gif" alt="Our Underwater ROV's First Swim!">
-      </div>
-      <div class="project-content">
-        <h2>Underwater ROV</h2>
+        <h2>Light Following Robot</h2>
         <p>
           
         </p>
         <div class="project-tags">
-          <span class="tag">Waterproofing</span>
-          <span class="tag">Manufacturing</span>
-          <span class="tag">PCB Design</span>
+          <span class="tag"></span>
+          <span class="tag"></span>
+          <span class="tag"></span>
         </div>
       </div>
     </article>
 
-    <!-- Project 4 -->
-    <article class="project-card">
+    
+    <!-- Project 2 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Bass Boost Audio Amplifier Project',
+          'This was a lab project in my Circuits and Electronics class where we designed our own audio amplifier circuit to boost the bass/lower frequency components of any song. Everyone had their own approach to the problem, but I used a low pass filter to attenuate higher frequencies (usually vocals) and amplified that signal using a tunable non-inverting operational amplifier. Then I mixed the boosted bass signal and the original track with an averager to produce a single audio result. This project was one of my favorites because of how open-ended the design parameter were — there was a ton of design freedom!',
+          'November 2025',
+          'Analog Circuit Design, Operational Amplifiers, Signal Processing, Filter Design',
+          this
+      )">
       <div class="project-media">
         <img src="bass_boost_diagram.jpg" alt="Circuit Schematic for A Bass Boost Audio Amplifier">
         <img src="bassboostamplifier.jpg" alt="My Circuit Implementation">
       </div>
       <div class="project-content">
-        <h2>Bass Boost Amplifier</h2>
+        <h2>Bass Boost Audio Amplifier Project</h2>
         <p>
-          
+          Custom audio amplifier to boost low frequencies using analog filtering and a tunable op-amp.
         </p>
         <div class="project-tags">
-          <span class="tag"></span>
-          <span class="tag"></span>
-          <span class="tag"></span>
+          <span class="tag">Analog Circuit Design</span>
+          <span class="tag">Operational Amplifiers</span>
+          <span class="tag">Signal Processing</span>
+          <span class="tag">Filter Design</span>
         </div>
       </div>
     </article>
 
-    <!-- Project 5 -->
-    <article class="project-card">
+    <!-- Project 3 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Line-Following Minibot',
+          'I decided to join the NEET (New Engineering Education Transformation) Autonomous Machines class this past semester when I wanted to add a more rigorous and hands-on project to my coursework. Through the class I developed programming skills in Arduino and intuition for the underlying mechanisms behind a variety of important sesnors in autonomy. Using a PID controller in conjunction with a line following sensor and IMU allowed me to program precise turns and achieve accurate path tracking. With a state machine to check for gaps in the track, my minibot was able to complete full figure-eights on the track, earning 2nd place in the compeition.',
+          'October 2025-December 2025',
+          'Arduino, Sensor Integration, PID Control, State Machines',
+          this
+      )">
+      <div class="project-media">
+        <img src="minibot_demo.gif" alt="Line Following Minibot Demonstration">
+      </div>
+      <div class="project-content">
+        <h2>Line-Following Minibot</h2>
+        <p>
+          Autonomous line-following robot using PID control and sensors such as IMUs and motor encoders to navigate a competition course.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Arduino</span>
+          <span class="tag">Sensor Integration</span>
+          <span class="tag">PID Control</span>
+          <span class="tag">State Machines</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 4 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Morse Code Decoder PSoC Project',
+          'Working as an electronics teaching assistant at an inter-Caribbean summer science program, I developing several final project templates for the student groups using Programmable System on Chip (PSoC) microcontrollers in C. One project was this morse code decoder to introduce student to digital input handling and data structures. This project uses three push buttons (dot, dash, and space) to inout Morse code, which is decoded in real time and displayed as text on an I2C OLED screen. A WaveDAC and on-chop operational amplifier were also incorporated to provide audio feedback for differet button presses. This was one of my first extensive programming projects in C; I was initially challenged by managing arrays for storing morse letter codes (instead of dictionary objects), but it eventually became intuitive, helping solidfy my understanding of low-level data structures and embedded programming.',
+          'July 2025',
+          'Embedded Systems, PSoC Microcontrollers, C Programming, I2C Communication',
+          this
+      )">
       <div class="project-media">
         <img src="morse_diagram.png" alt="Circuit Schematic Diagram">
         <img src="morse_demo.gif" alt="A Demonstration of the Morse Decoder Working">
@@ -259,111 +336,18 @@
       <div class="project-content">
         <h2>Morse Code Decoder</h2>
         <p>
-          
+          Embedded Morse coder decoder using PSoC microcontrollers to convert digital input to real-time feedback.
         </p>
         <div class="project-tags">
-          <span class="tag"></span>
-          <span class="tag"></span>
-          <span class="tag"></span>
+          <span class="tag">Embedded Systems</span>
+          <span class="tag">PSoC Microcontrollers</span>
+          <span class="tag">C Programming</span>
+          <span class="tag">I2C Communication</span>
         </div>
       </div>
     </article>
 
-    <!-- Project 6 -->
-    <article class="project-card">
-      <div class="project-media">
-        <img src="neck_brace_CAD.png" alt="SolidWorks Neck Brace CAD">
-        <img src="assembly_overview.png" alt="Payload Assembly">
-      </div>
-      <div class="project-content">
-        <h2>Rocket Team Payload Assembly</h2>
-        <p>
-          
-        </p>
-        <div class="project-tags">
-          <span class="tag">SolidWorks</span>
-          <span class="tag"></span>
-          <span class="tag"></span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 7 -->
-    <article class="project-card">
-      <div class="project-media">
-        <img src="paper_abstract.png" alt="Abstract of Black Hole Rotation Paper">
-        <img src="parameter_stepping.gif" alt="Parameter Stepping Simulation">
-      </div>
-      <div class="project-content">
-        <h2>Investigating Black Hole Spin</h2>
-        <p>
-          
-        </p>
-        <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Spectroscopy Software</span>
-          <span class="tag"></span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 8 -->
-    <article class="project-card">
-      <div class="project-media">
-        <img src="balsa_plane.jpg" alt="Balsa Wood Plane Profile">
-        <img src="plane_demo.gif" alt="Plane Flight Testing">
-      </div>
-      <div class="project-content">
-        <h2>Balsa Wood Airplane</h2>
-        <p>
-          
-        </p>
-        <div class="project-tags">
-          <span class="tag">Manufacturing</span>
-          <span class="tag"></span>
-          <span class="tag"></span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 9 -->
-    <article class="project-card">
-      <div class="project-media">
-        <img src="minibot_demo.gif" alt="Line Following Minibot Demonstration">
-      </div>
-      <div class="project-content">
-        <h2>Line Following Minibot</h2>
-        <p>
-          
-        </p>
-        <div class="project-tags">
-          <span class="tag"></span>
-          <span class="tag"></span>
-          <span class="tag"></span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 10 -->
-    <article class="project-card">
-      <div class="project-media">
-        <img src="light_following_diagram.jpeg" alt="Light Following Robot Circuit Diagram">
-        <img src="light_following_demo.gif" alt="Light Following Robot Demonstration">
-      </div>
-      <div class="project-content">
-        <h2>Light Following Roboty</h2>
-        <p>
-          
-        </p>
-        <div class="project-tags">
-          <span class="tag"></span>
-          <span class="tag"></span>
-          <span class="tag"></span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Project 11 -->
+    <!-- Project 5 -->
     <article class="project-card">
       <div class="project-media">
         <img src="ultrasonic_diagram.png" alt="Ultrasonic Distance Sensor Circuit Diagram">
@@ -381,7 +365,7 @@
       </div>
     </article>
 
-    <!-- Project 12 -->
+    <!-- Project 6 -->
     <article class="project-card">
       <div class="project-media">
         <img src="simonsays_diagram.png" alt="PSoC Simon Says Game">
@@ -399,11 +383,239 @@
       </div>
     </article>
 
+    <!-- Project 7 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Investigating Black Hole Spin',
+          'Starting in January of my freshman year at MIT, I worked as an undergraduate researcher at the Kavli Institute for Astrophysics and Space Research, investigating two complementary methods (known as relativistic reflection and continuum fitting) used to determine black hole accretion disk spin with X-ray spectroscopy. Using software called XSpec in Python, I ran parallelized Markov Chain Monte Carlo (MCMC) simulations to find combinations of black hole parameters with greatest statistical certainty for both models. I then analyzed these chains using correlation analysis and linear regression simulations to understand which parameter were most highly linked between spectral fits. Characterizing these spectral parameter linkages is crucial for us to understand the strengths and limitations of each modeling approach and when to apply them.',
+          'January 2025-present',
+          'XRay Spectroscopy, Linux, Python, Linear Regresion, Markov Chain Monte Carlo, LaTeX',
+          this
+      )">
+      <div class="project-media">
+        <img src="paper_abstract.png" alt="Abstract of Black Hole Rotation Paper">
+        <img src="parameter_stepping.gif" alt="Parameter Stepping Simulation">
+      </div>
+      <div class="project-content">
+        <h2>Investigating Black Hole Spin</h2>
+        <p>
+          Undergraduate research project comparing X-ray spectral modeling techniques for measuring black hole spin, to culminate in a first-author publication.
+        </p>
+        <div class="project-tags">
+          <span class="tag">X-ray Spectroscopy</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Python</span>
+          <span class="tag">Linear Regression</span>
+          <span class="tag">Markov Chain Monte Carlo</span>
+          <span class="tag">LaTeX</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 8 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Rocket Team Payload Design and Assembly',
+          'During my freshman year at MIT, I served as the responsible engineer for the neck brace component of a rocket payload to study the effects of 14-G spaceflight acceleration on the human cervical spine. Over three formal design cycles (Conceptual Design Review, Preliminary Design Review, Critical Design Review), I iterated the brace design, incorporating slots for the insertion of three pressure sensors, strap hooks to secure the two brace halves with velcro, and an attachment lip to restrict motion. I also assisted in material selection for our spine model, opting for dense polyurethane foam to approximate the Youngs Modulus of an intervertebral diskm and PETG for the outer brace for its resistance to compression. In the spring semester, the structures subteam and I printed the brace and encased the spine model in DragonSkin silicone resin (to model human tissue), preparing the payload for the full rocket launch in June.',
+          'August 2024-May 2025',
+          'SolidWorks, 3D Printing, Biomechanics, Material Selection, Design Review',
+          this
+      )">
+      <div class="project-media">
+        <img src="neck_brace_CAD.png" alt="SolidWorks Neck Brace CAD">
+        <img src="assembly_overview.png" alt="Payload Assembly">
+      </div>
+      <div class="project-content">
+        <h2>Rocket Team Payload Design and Assembly</h2>
+        <p>
+          Payload neck brace design and assembly to test the impact of high-G spaceflight on the human cervical spine.
+        </p>
+        <div class="project-tags">
+          <span class="tag">SolidWorks</span>
+          <span class="tag">3D Printing</span>
+          <span class="tag">Biomechanics</span>
+          <span class="tag">Material Selection</span>
+          <span class="tag">Design Review</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 9 -->
+    <article class="project-card"
+      onclick="openModal(
+        'Flapping Barbie Fairy Wings',
+        'I designed and built a pair of User-controlled flapping fairy wings inspired by the 2011 *Barbie: A Fairy Secret* movie in my senior year of high school for a interactive cosplay design contest in our engineering club. Reusing aluminum C channels and Vex motors from my junior year robotics project, I assembled the electrical system to synchronize wing motion. My friend and I crafted the wings themselves out of construction wire and cellophane, heat sealing the design for durability. We also made a shape-shifting silk skirt, and our tem ended up winning first in the competition!',
+        'January 2024',
+        'C++, VEX Robotics, Electromechanical Design, Wearable Design, Rapid Prototyping',
+        this
+      )">
+      <div class="project-media">
+        <img src="wings_internals.jpg" alt="Wings Internal Diagram">
+        <img src="wings_demo.gif" alt="Wings Flapping Demonstration">
+      </div>
+      <div class="project-content">
+        <h2>Flapping Barbie Fairy Wings</h2>
+        <p>
+          User-controlled Barbie flapping fairy wings for a cosplay design competition.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Electromechanical Design</span>
+          <span class="tag">Vex Robotics</span>
+          <span class="tag">Wearable Design</span>
+          <span class="tag">Rapid Prototyping</span>
+          <span class="tag">C++</span>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Project 10 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Manta Ray-Inspired Underwater ROV',
+          'In my senior year of high school, my robotics co-captain and I decided to take on developing an underwater remote operated vehicle (ROV) for our year-long project. Delving into an underwater robotics textbook, we learned about hull design, buoyancy, and waterproofing procedures, mentoring younger students in the club. Our final design incorporated an onboard live camera and three motors, enabling full 3-axis motion. Through iterative design and testing, we refined the vehicle’s stability and maneuverability in water. I later constructed a second version of the ROV for an orientation competition with some friends at MIT, with its body inspired by a manta ray!',
+          'August 2023-May 2024',
+          'Underwater Robotics, Waterproofing, Design Iteration, Electronics Assembly, Mentoring',
+          this
+      )">
+      <div class="project-media">
+        <img src="mantaray_rov.jpg" alt="A Manta Ray Inspired Underwater ROV">
+        <img src="rov_swimming.gif" alt="Our Underwater ROV's First Swim!">
+      </div>
+      <div class="project-content">
+        <h2>Underwater ROV</h2>
+        <p>
+          Underwater remotely operated vehicle with an onboard camera and 3-axis motion.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Underwater Robotics</span>
+          <span class="tag">Waterproofing</span>
+          <span class="tag">Design Iteration</span>
+          <span class="tag">Electronics Assembly</span>
+          <span class="tag">Mentoring</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 11 -->
+    <article class="project-card"
+        onclick="openModal(
+          'Disk Launching Robot',
+          'This was my junior year high school Vex robotics team project, featuring a flywheel with a 75:1 gear ratio. We were a new club, so in our design phases we 3D printed a lot of the parts in PLA with our school printers (such as the gears, disks, and small hardware connectors) before we ordered the official parts from the Vex company. This was my first introduction to 3D printing and CAD in Fusion360 and TinkerCAD. The disk featured in this video was printed out of PLA, so the foam disks in competition were much more aerodynamic!',
+          'August 2022-May 2023',
+          'C++, VEX Robotics, Fusion 360, 3D Printing, Mechanical Design',
+          this
+        )">
+      <div class="project-media">
+        <img src="flywheel_gears.jpg" alt="Flywheel Gear Ratio 75:1">
+        <img src="flying_disk.gif" alt="Robot Launching Flying Disk">
+      </div>
+      <div class="project-content">
+        <h2>Disk Launching Robot</h2>
+        <p>
+          High school Vex robotics team project, featuring a flywheel with a 75:1 gear ratio.
+        </p>
+        <div class="project-tags">
+          <span class="tag">C++</span>
+          <span class="tag">Vex Robotics</span>
+          <span class="tag">Fusion360</span>
+          <span class="tag">3D Printing</span>
+          <span class="tag">Mechanical Design</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 12 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Balsa Wood Airplane',
+          'Over my last three years of high school, I competed in the Wright Stuff event for Science Olympiad, which challenges teams to design and built a lightweight rubber-powered balsa wood airplane under strict design constraints. Each year, two friends and I manufactured a new balsa wood plane to fit new design restrictions, including an 8-gram mass limit. We carefully cut and assembled the fuselage from balsa wood and meticulously glued thin vinyl wings. We tested our planes in the school gymnaisum with different weight rubber bands, documenting both the torque, winds, flight time, and tail wing angles to fine tune for competition flight.',
+          'August 2021-May 2024',
+          'Manufacturing, Lightweight Structures, Experimental Testing, Aerodyanmics',
+          this
+      )">
+      <div class="project-media">
+        <img src="balsa_plane.jpg" alt="Balsa Wood Plane Profile">
+        <img src="plane_demo.gif" alt="Plane Flight Testing">
+      </div>
+      <div class="project-content">
+        <h2>Balsa Wood Airplane</h2>
+        <p>
+          Science Olympiad rubber-powered balsa wood aircraft designed with flight time and weight restrictions in mind.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Manufacturing</span>
+          <span class="tag">Lightweight Structures</span>
+          <span class="tag">Experimental Testing</span>
+          <span class="tag">Aerodynamics</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 13 -->
+    <article class="project-card">
+      <div class="project-media">
+        <img src="Cassegrian_photon_tracing.png" alt="Tracing the Path of Photon onto the Cassegrian's CCD">
+      </div>
+      <div class="project-content">
+        <h2>Cassegrian Reflector Telescope Modeling</h2>
+        <p>
+          
+        </p>
+        <div class="project-tags">
+          <span class="tag"></span>
+          <span class="tag"></span>
+          <span class="tag"></span>
+        </div>
+      </div>
+    </article>
+
   </main>
 
   <footer>
     © <span>Tiffany Tausch</span> — Project Portfolio
   </footer>
+
+  <script>
+    function openModal(title, description, time, skills, cardElement) {
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalDescription").textContent = description;
+      document.getElementById("modalTime").textContent = time;
+      document.getElementById("modalSkills").textContent = skills;
+
+      const modalMedia = document.getElementById("modalMedia");
+      modalMedia.innerHTML = ""; // clear old images
+
+      const images = cardElement.querySelectorAll(".project-media img");
+
+      images.forEach(img => {
+        const clone = img.cloneNode(true);
+        modalMedia.appendChild(clone);
+      });
+
+      document.getElementById("projectModal").classList.add("active");
+    }
+
+    function closeModal() {
+      document.getElementById("projectModal").classList.remove("active");
+    }
+  </script>
+
+  <div class="modal-overlay" id="projectModal" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">×</button>
+
+      <div class="modal-media" id="modalMedia"></div>
+
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+
+      <div class="modal-meta">
+        <p><strong>Timeframe:</strong> <span id="modalTime"></span></p>
+        <p><strong>Skills:</strong> <span id="modalSkills"></span></p>
+      </div>
+    </div>
+  </div>
+
 
 </body>
 </html>
