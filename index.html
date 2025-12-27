@@ -225,53 +225,126 @@
       width: 100%;
     }
 
+    .about {
+      max-width: 1100px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2rem;
+      align-items: center;
+      background: linear-gradient(180deg, var(--card), #020617);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    .about-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .about-text h2 {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+
+    /* Mobile-friendly */
+    @media (max-width: 700px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .about-image {
+        width: 140px;
+        margin: 0 auto;
+      }
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .header-inner p {
+      max-width: 700px;
+    }
+
 
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Personal Projects Collection</h1>
-    <p>
-      A collection of my personal projects from the past few years, showcasing my skills in programming, embedded systems design, and passion for robotics. I have had a wide variety of academic interests throughout the years, and it has been so fun to
-      see how the same skills can come in handy in different contexts. Please enjoy this little peek into my design world!
-    </p>
+    <div class="header-inner">
+      <h1>Personal Projects Collection</h1>
+    </div>
   </header>
 
-  <main>
+  <section class="about">
+    <div class="about-content">
+      <img src="headshot.png" alt="Headshot of Tiffany Tausch" class="about-image">
 
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          I’m an MIT undergraduate with interests spanning robotics, embedded systems, and astrophysics.
+          I love building things sit at the intersection of my interests in hardware and physics, and I love
+          any opportunity to be creative when it comes to both aesthetics and engineering solutions.
+        </p>
+        <p>
+          This site is a snapshot of the projects that have shaped how I think as an engineer over the past few years, showcasing my skills in programming, embedded systems design, and passion for robotics. I have had a wide variety of academic interests, and it has been so fun to
+          see how the same skills can come in handy in different contexts. Please enjoy this little peek into my design world!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <main>
     <!-- Project 1 -->
     <article class="project-card"
       onclick="openModal(
-          'Bass Boost Audio Amplifier Project',
-          'This was a lab project in my Circuits and Electronics class where we designed our ',
-          'November 2025',
-          'Analog Circuit Design, Operational Amplifiers, ',
+          'Line-Following Minibot',
+          'I decided to join the NEET (New Engineering Education Transformation) Autonomous Machines class this past semester when I wanted to add a more rigorous and hands-on project to my coursework. Through the class, I developed programming skills in Arduino and intuition for the underlying mechanisms behind a variety of important sesnors in autonomy. Using a PID controller in conjunction with a line-following sensor and IMU allowed me to program precise turns and achieve accurate path tracking. With a state machine to check for gaps in the track, my Minibot was able to complete full figure-eights on the track, earning 2nd place in the final competition.',
+          'October 2025-December 2025',
+          'Arduino, Sensor Integration, PID Control, State Machines',
           this
       )">
       <div class="project-media">
-        <img src="light_following_diagram.jpeg" alt="Light Following Robot Circuit Diagram">
-        <img src="light_following_demo.gif" alt="Light Following Robot Demonstration">
+        <img src="minibot_demo.gif" alt="Line Following Minibot Demonstration">
       </div>
       <div class="project-content">
-        <h2>Light Following Robot</h2>
+        <h2>Line-Following Minibot</h2>
         <p>
-          
+          Autonomous line-following robot using PID control and sensors such as IMUs and motor encoders to navigate a competition course.
         </p>
         <div class="project-tags">
-          <span class="tag"></span>
-          <span class="tag"></span>
-          <span class="tag"></span>
+          <span class="tag">Arduino</span>
+          <span class="tag">Sensor Integration</span>
+          <span class="tag">PID Control</span>
+          <span class="tag">State Machines</span>
         </div>
       </div>
     </article>
 
-    
     <!-- Project 2 -->
     <article class="project-card"
       onclick="openModal(
           'Bass Boost Audio Amplifier Project',
-          'This was a lab project in my Circuits and Electronics class where we designed our own audio amplifier circuit to boost the bass/lower frequency components of any song. Everyone had their own approach to the problem, but I used a low pass filter to attenuate higher frequencies (usually vocals) and amplified that signal using a tunable non-inverting operational amplifier. Then I mixed the boosted bass signal and the original track with an averager to produce a single audio result. This project was one of my favorites because of how open-ended the design parameter were — there was a ton of design freedom!',
+          'This was a lab project in my Circuits and Electronics class where we designed our own audio amplifier circuit to boost the bass/lower frequency components of any song. Everyone had their own approach to the problem, but I used a low-pass filter to attenuate higher frequencies (usually vocals) and amplified that signal using a tunable non-inverting operational amplifier. Then I mixed the boosted bass signal and the original track with an averager to produce a single audio result. This project was one of my favorites because of how open-ended the design parameter were — there was a ton of design freedom!',
           'November 2025',
           'Analog Circuit Design, Operational Amplifiers, Signal Processing, Filter Design',
           this
@@ -297,25 +370,26 @@
     <!-- Project 3 -->
     <article class="project-card"
       onclick="openModal(
-          'Line-Following Minibot',
-          'I decided to join the NEET (New Engineering Education Transformation) Autonomous Machines class this past semester when I wanted to add a more rigorous and hands-on project to my coursework. Through the class I developed programming skills in Arduino and intuition for the underlying mechanisms behind a variety of important sesnors in autonomy. Using a PID controller in conjunction with a line following sensor and IMU allowed me to program precise turns and achieve accurate path tracking. With a state machine to check for gaps in the track, my minibot was able to complete full figure-eights on the track, earning 2nd place in the compeition.',
-          'October 2025-December 2025',
-          'Arduino, Sensor Integration, PID Control, State Machines',
+          'Light Following Robot',
+          'This was a lab project in my Circuits and Electronics class where we designed a fully analog light-following robot using photoresistors and operational amplifiers. The two motors each had a minimum operating voltage, so using a non-inverting operational amplifier, I created a potentiometer-controlled offset voltage for the relative ground of the motor. This allowed the motor to spin in opposite directions based on the buffered voltage drop across the photoresistor from the leftmost voltage divider. Each motor had a copy of this circuit with the photoresistors positioned at the front as cute little eyes!',
+          'November 2025',
+          'Analog Circuit Design, Operational Amplifiers, Motor Control, Electronics Prototyping',
           this
       )">
       <div class="project-media">
-        <img src="minibot_demo.gif" alt="Line Following Minibot Demonstration">
+        <img src="light_following_diagram.jpeg" alt="Light Following Robot Circuit Diagram">
+        <img src="light_following_demo.gif" alt="Light Following Robot Demonstration">
       </div>
       <div class="project-content">
-        <h2>Line-Following Minibot</h2>
+        <h2>Light Following Robot</h2>
         <p>
-          Autonomous line-following robot using PID control and sensors such as IMUs and motor encoders to navigate a competition course.
+          Fully analog light-following robot using photoresistors and tunable voltage offsets for motor control.
         </p>
         <div class="project-tags">
-          <span class="tag">Arduino</span>
-          <span class="tag">Sensor Integration</span>
-          <span class="tag">PID Control</span>
-          <span class="tag">State Machines</span>
+          <span class="tag">Analog Circuit Design</span>
+          <span class="tag">Operational Amplifiers</span>
+          <span class="tag">Motor Control</span>
+          <span class="tag">Electronics Prototyping</span>
         </div>
       </div>
     </article>
@@ -324,7 +398,7 @@
     <article class="project-card"
       onclick="openModal(
           'Morse Code Decoder PSoC Project',
-          'Working as an electronics teaching assistant at an inter-Caribbean summer science program, I developing several final project templates for the student groups using Programmable System on Chip (PSoC) microcontrollers in C. One project was this morse code decoder to introduce student to digital input handling and data structures. This project uses three push buttons (dot, dash, and space) to inout Morse code, which is decoded in real time and displayed as text on an I2C OLED screen. A WaveDAC and on-chop operational amplifier were also incorporated to provide audio feedback for differet button presses. This was one of my first extensive programming projects in C; I was initially challenged by managing arrays for storing morse letter codes (instead of dictionary objects), but it eventually became intuitive, helping solidfy my understanding of low-level data structures and embedded programming.',
+          'Working as an electronics teaching assistant at an inter-Caribbean summer science program, I developing several final project templates for the student groups using Programmable System on Chip (PSoC) microcontrollers in C. One project was this morse code decoder to introduce students to digital input handling and data structures. This project uses three push buttons (dot, dash, and space) to input Morse code, which is decoded in real time and displayed as text on an I2C OLED screen. A WaveDAC and on-chip operational amplifier were also incorporated to provide audio feedback for different button presses. This was one of my first extensive programming projects in C; I was initially challenged by managing arrays for storing morse letter codes (instead of the dictionary objects I was used to!), but it eventually became intuitive, helping solidfy my understanding of low-level data structures and embedded programming.',
           'July 2025',
           'Embedded Systems, PSoC Microcontrollers, C Programming, I2C Communication',
           this
@@ -348,37 +422,55 @@
     </article>
 
     <!-- Project 5 -->
-    <article class="project-card">
+    <article class="project-card"
+      onclick="openModal(
+          'Ultrasonic Distance Sensor with Chirp',
+          'This is another one of the final projects I developed for the students at the SPISE Caribbean science program, incorporating digital logic components such as a Pulse Width Modulator (PWM) and Timer to interface with an ultrasonic distance sensor and produce chirps based on object proximity. In order to determine object distance, the ultrasonic sensor sends out sound waves when triggered, resulting in a digital ECHO pulse with width proportional to distance traveled by the sound waves. Using the PSoC Timer component, I measured the width of this pulse and converted that into a distance, which I then used to change the period of a the PWM, producing auditory chirps at greater frequencies for closer distances. A system like this could later be adapted into an ear implant to help blind people navigate crowded or confusing environments.',
+          'July 2025',
+          'Embedded Systems, Ultrasonic Sensing, PWM & Timers, PSoC Microcontrollers, Assistive Technology',
+          this
+      )">
       <div class="project-media">
         <img src="ultrasonic_diagram.png" alt="Ultrasonic Distance Sensor Circuit Diagram">
       </div>
       <div class="project-content">
-        <h2>Ultrasonic Distance Sensing</h2>
+        <h2>Ultrasonic Distance Sensor with Chirp</h2>
         <p>
-          
+          Embedded ultrasonic sensing project with auditory chirp feedback to assist in spatial navigation.
         </p>
         <div class="project-tags">
-          <span class="tag"></span>
-          <span class="tag"></span>
-          <span class="tag"></span>
+          <span class="tag">Embedded Systems</span>
+          <span class="tag">Ultrasonic Sensing</span>
+          <span class="tag">PWM & Timers</span>
+          <span class="tag">PSoC Microcontrollers</span>
+          <span class="tag">Assistive Technology</span>
         </div>
       </div>
     </article>
 
     <!-- Project 6 -->
-    <article class="project-card">
+    <article class="project-card"
+      onclick="openModal(
+          'Simon Says Game',
+          'This was my last final project template in the SPISE program, and possibly the most fun one! Using a Psuedo Random Sequence (PRS) Generator, each level of the Simon Says game could flash a unique sequence on a group of 4 different colored LEDs. Users would have to respond within a time limit determined by level length, and each LED was accompanied by its own unique auditory tone, produced by a PSoC WaveDAC component. The game would speed up in each level and students programmed their own sucess and failure LED flash sequences in the accompanied C file.',
+          'July 2025',
+          'Embedded C, State Machines, Pseudo-Random Sequences, PSoC Microcontrollers, Interactive Systems',
+          this
+      )">
       <div class="project-media">
         <img src="simonsays_diagram.png" alt="PSoC Simon Says Game">
       </div>
       <div class="project-content">
-        <h2>PSoC Simon Says Game</h2>
+        <h2>Simon Says Game</h2>
         <p>
-          
+          Interactive Simon Says game with random sequences flashed on 4 different colored LEDS.
         </p>
         <div class="project-tags">
-          <span class="tag"></span>
-          <span class="tag"></span>
-          <span class="tag"></span>
+          <span class="tag">Embedded C</span>
+          <span class="tag">State Machines</span>
+          <span class="tag">Pseudo-Random Sequences</span>
+          <span class="tag">PSoC Microcontrollers</span>
+          <span class="tag">Interactive Systems</span>
         </div>
       </div>
     </article>
@@ -387,7 +479,7 @@
     <article class="project-card"
       onclick="openModal(
           'Investigating Black Hole Spin',
-          'Starting in January of my freshman year at MIT, I worked as an undergraduate researcher at the Kavli Institute for Astrophysics and Space Research, investigating two complementary methods (known as relativistic reflection and continuum fitting) used to determine black hole accretion disk spin with X-ray spectroscopy. Using software called XSpec in Python, I ran parallelized Markov Chain Monte Carlo (MCMC) simulations to find combinations of black hole parameters with greatest statistical certainty for both models. I then analyzed these chains using correlation analysis and linear regression simulations to understand which parameter were most highly linked between spectral fits. Characterizing these spectral parameter linkages is crucial for us to understand the strengths and limitations of each modeling approach and when to apply them.',
+          'Starting in January of my freshman year at MIT, I worked as an undergraduate researcher at the Kavli Institute for Astrophysics and Space Research, investigating two complementary methods (known as relativistic reflection and continuum fitting) used to determine black hole accretion disk spin with X-ray spectroscopy. Using software called XSpec in Python, I ran parallelized Markov Chain Monte Carlo (MCMC) simulations to find combinations of black hole parameters with greatest statistical certainty for both models. I then analyzed these chains using correlation analysis and linear regression simulations to understand which parameters were most linked between spectral fits. Characterizing these spectral parameter linkages is crucial for the community to understand the strengths and limitations of each modeling approach and when to apply them.',
           'January 2025-present',
           'XRay Spectroscopy, Linux, Python, Linear Regresion, Markov Chain Monte Carlo, LaTeX',
           this
@@ -416,7 +508,7 @@
     <article class="project-card"
       onclick="openModal(
           'Rocket Team Payload Design and Assembly',
-          'During my freshman year at MIT, I served as the responsible engineer for the neck brace component of a rocket payload to study the effects of 14-G spaceflight acceleration on the human cervical spine. Over three formal design cycles (Conceptual Design Review, Preliminary Design Review, Critical Design Review), I iterated the brace design, incorporating slots for the insertion of three pressure sensors, strap hooks to secure the two brace halves with velcro, and an attachment lip to restrict motion. I also assisted in material selection for our spine model, opting for dense polyurethane foam to approximate the Youngs Modulus of an intervertebral diskm and PETG for the outer brace for its resistance to compression. In the spring semester, the structures subteam and I printed the brace and encased the spine model in DragonSkin silicone resin (to model human tissue), preparing the payload for the full rocket launch in June.',
+          'During my freshman year at MIT, I served as the responsible engineer for the neck brace component of a rocket payload to study the effects of 14-G spaceflight acceleration on the human cervical spine. Over three formal design cycles (Conceptual Design Review, Preliminary Design Review, Critical Design Review), I iterated the brace design, incorporating slots for the insertion of three pressure sensors, strap hooks to secure the two brace halves with velcro, and an attachment lip to restrict motion. I also assisted in material selection for our spine model, opting for dense polyurethane foam to approximate the Young\'s Modulus of an intervertebral disk and PETG for the outer brace for its resistance to compression. In the spring semester, the structures subteam and I printed the brace and encased the spine model in DragonSkin silicone resin (to model human tissue), preparing the payload for the full rocket launch in June.',
           'August 2024-May 2025',
           'SolidWorks, 3D Printing, Biomechanics, Material Selection, Design Review',
           this
@@ -439,8 +531,36 @@
         </div>
       </div>
     </article>
-
+    
     <!-- Project 9 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Manta Ray-Inspired Underwater ROV',
+          'In my senior year of high school, my robotics team co-captain and I decided to take on developing an underwater remote operated vehicle (ROV) for our year-long project. Delving into an underwater robotics textbook, we learned about hull design, buoyancy, and waterproofing procedures, mentoring younger students in the club. Our final design incorporated an onboard live camera and three motors, enabling full 3-axis motion. Through iterative design and testing, we refined the vehicle’s stability and maneuverability in water. I later constructed a second version of the ROV for an orientation competition with some friends at MIT, with its body inspired by a manta ray!',
+          'August 2023-May 2024',
+          'Underwater Robotics, Waterproofing, Design Iteration, Electronics Assembly, Mentoring',
+          this
+      )">
+      <div class="project-media">
+        <img src="mantaray_rov.jpg" alt="A Manta Ray Inspired Underwater ROV">
+        <img src="rov_swimming.gif" alt="Our Underwater ROV's First Swim!">
+      </div>
+      <div class="project-content">
+        <h2>Underwater ROV</h2>
+        <p>
+          Underwater remotely operated vehicle with an onboard camera and 3-axis motion.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Underwater Robotics</span>
+          <span class="tag">Waterproofing</span>
+          <span class="tag">Design Iteration</span>
+          <span class="tag">Electronics Assembly</span>
+          <span class="tag">Mentoring</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 10 -->
     <article class="project-card"
       onclick="openModal(
         'Flapping Barbie Fairy Wings',
@@ -467,36 +587,36 @@
         </div>
       </div>
     </article>
-    
-    <!-- Project 10 -->
+
+    <!-- Project 11 -->
     <article class="project-card"
-      onclick="openModal(
-          'Manta Ray-Inspired Underwater ROV',
-          'In my senior year of high school, my robotics co-captain and I decided to take on developing an underwater remote operated vehicle (ROV) for our year-long project. Delving into an underwater robotics textbook, we learned about hull design, buoyancy, and waterproofing procedures, mentoring younger students in the club. Our final design incorporated an onboard live camera and three motors, enabling full 3-axis motion. Through iterative design and testing, we refined the vehicle’s stability and maneuverability in water. I later constructed a second version of the ROV for an orientation competition with some friends at MIT, with its body inspired by a manta ray!',
-          'August 2023-May 2024',
-          'Underwater Robotics, Waterproofing, Design Iteration, Electronics Assembly, Mentoring',
+        onclick="openModal(
+          'Asteroid Orbital Modeling',
+          'As a participant in the 2023 Summer Science Program, I worked in a team of three to observe and model the orbit of the near-Earth asteroid, 1998 RO4. Applying the Method of Gauss, we used Python simulations to determine six orbital parameters of the asteroid, including inclination, semimajor axis, and eccentricity from group observations at the UNC Morehead Observatory. We then ran time-evolution simulations with the Southwest Research Institute to predict future fates of our asteroid, determining safety for our future Earth! Outside of asteroid focused projects, we also learned how to piece together color astronomical images using different lense filters and even examined galactic clusters to estimate Hubble\'s constant.',
+          'June 2023-July 2023',
+          'Orbital Mechanics, Astrophysical Modeling, Python, Monte Carlo Simulation, Observational Astronomy',
           this
-      )">
+        )">
       <div class="project-media">
-        <img src="mantaray_rov.jpg" alt="A Manta Ray Inspired Underwater ROV">
-        <img src="rov_swimming.gif" alt="Our Underwater ROV's First Swim!">
+        <img src="RO4_orbit.png" alt="Elliptical Orbit of 1998 RO4">
+        <img src="elements_montecarlo.png" alt="Montecarlo Simulations of Six Orbital Parameters">
       </div>
       <div class="project-content">
-        <h2>Underwater ROV</h2>
+        <h2>Asteroid Orbital Modeling</h2>
         <p>
-          Underwater remotely operated vehicle with an onboard camera and 3-axis motion.
+          Summer science project modeling the orbit of near-Earth asteroid 1998 RO4 via application of the Method of Gauss to direct observations.
         </p>
         <div class="project-tags">
-          <span class="tag">Underwater Robotics</span>
-          <span class="tag">Waterproofing</span>
-          <span class="tag">Design Iteration</span>
-          <span class="tag">Electronics Assembly</span>
-          <span class="tag">Mentoring</span>
+          <span class="tag">Orbital Mechanics</span>
+          <span class="tag">Astrophysical Modeling</span>
+          <span class="tag">Python</span>
+          <span class="tag">Monte Carlo Simulation</span>
+          <span class="tag">Observational Astronomy</span>
         </div>
       </div>
     </article>
 
-    <!-- Project 11 -->
+    <!-- Project 12 -->
     <article class="project-card"
         onclick="openModal(
           'Disk Launching Robot',
@@ -524,7 +644,7 @@
       </div>
     </article>
 
-    <!-- Project 12 -->
+    <!-- Project 13 -->
     <article class="project-card"
       onclick="openModal(
           'Balsa Wood Airplane',
@@ -551,20 +671,28 @@
       </div>
     </article>
 
-    <!-- Project 13 -->
-    <article class="project-card">
+    <!-- Project 14 -->
+    <article class="project-card"
+      onclick="openModal(
+          'Cassegrian Reflector Telescope Modeling',
+          'This was a group project from my high school multivariable calculus class, where each team modeled a telescope to fit the fairing of a rocket of their choice. We opted for the Atlas V, and developed our own Cassegrian reflector telescope with the goal of observing near-Earth asteroids. The bottom primary mirror is parabolic, with focus aligned with that of the upper secondary hyperbolic mirror. When photons head in parallel along the telescope barrel, they converge at lower focus of the hyperbolic mirror, just behind the larger parabolic mirror and where most Cassegrain reflectors place their CCD. By calculating the gradient at arbitary points along the mirror, I developed an equation that could predict the landing site of slightly off-parallel photons on the CCD, which could help account for any visual distortions.',
+          'December 2022',
+          'Mathematical Modeling, Optics Design, Ray Tracing, Multivariable Calculus',
+          this
+      )">
       <div class="project-media">
         <img src="Cassegrian_photon_tracing.png" alt="Tracing the Path of Photon onto the Cassegrian's CCD">
       </div>
       <div class="project-content">
         <h2>Cassegrian Reflector Telescope Modeling</h2>
         <p>
-          
+          Multivariable calculus group project to design and model a telescope to fit in the faring of an Atlas V.
         </p>
         <div class="project-tags">
-          <span class="tag"></span>
-          <span class="tag"></span>
-          <span class="tag"></span>
+          <span class="tag">Mathematical Modeling</span>
+          <span class="tag">Optics Design</span>
+          <span class="tag">Ray Tracing</span>
+          <span class="tag">Multivariable Calculus</span>
         </div>
       </div>
     </article>
