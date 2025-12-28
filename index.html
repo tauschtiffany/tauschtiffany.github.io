@@ -176,8 +176,14 @@
       background: linear-gradient(180deg, var(--card), #020617);
       border-radius: 16px;
       padding: 2rem;
-      max-width: 600px;
+
       width: 90%;
+      max-width: 900px;
+      max-height: 90vh;
+
+      overflow-y: auto;
+      position: relative;
+
       border: 1px solid var(--border);
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
     }
@@ -204,10 +210,6 @@
       font-size: 1.5rem;
       color: var(--text-main);
       cursor: pointer;
-    }
-
-    .modal {
-      max-width: 900px;
     }
 
     .modal-grid {
@@ -238,6 +240,17 @@
 
     /* Mobile: stack text above images */
     @media (max-width: 800px) {
+      .modal-overlay {
+        align-items: flex-start;
+        padding: 1.25rem;
+      }
+
+      .modal {
+        width: 100%;
+        max-height: calc(100vh - 2.5rem);
+        padding: 1.25rem;
+      }
+
       .modal-grid {
         grid-template-columns: 1fr;
       }
